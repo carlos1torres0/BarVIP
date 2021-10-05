@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+ :root{
+    /* Configuración colores:  https://www.materialpalette.com/download.css/yellow/blue */
+    --dark-primary-color    : #FBC02D;
+    --default-primary-color : #FFEB3B;
+    --light-primary-color   : #FFF9C4;
+    --accent-color          : #2E86C1;
+    --light-text-color      : #FBFCFC;
+    --primary-text-color    : #212121;
+    --secondary-text-color  : #757575;
+    --divider-color         : #BDBDBD;
+
+    --font: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+
+ html {
+    height: 100%;
+}
+
+body{
+  font-family: va(--font);
+  color: var(--primary-text-color);
+  background-color: none;
+}
+
+
+/*---------------*/
+
+body{
+    font-size: 1.2rem;
+    min-height: 100%; /* Para extender todos los componentes dentro del contenedor al 100% */
+}
+
+.grid-container > * {
+    box-shadow: -1px 1px 7px 0px rgba(0,0,0,75);
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+}
+
+.header{
+    grid-area: header;
+    background-color: #85aedd;
+}
+
+.navbar{
+    grid-area: navbar;
+    background-color: #afd6af;
+}
+
+.sidebar{
+    grid-area: sidebar;
+    background-color: #f5f5f5;
+}
+
+.main{
+    grid-area: main;
+    background-color: #fdcfcf;
+}
+
+.footer{
+    grid-area: footer;
+    background-color: #239b29;
+}
+
+.grid-container{
+    display: grid;
+    gap: 10px; /* Separación entre elementos */
+    /* Vamos a imprimir diferentes áreas */
+    grid-template: 
+        "header"    10%
+        "navbar"    5%
+        "main"      auto
+        "sidebar"   auto
+        "footer"    5%;
+}
+
+@media (min-width: 600px){
+    .grid-container{
+        /* grid-template-columns: 20% auto;
+        grid-template-rows: 10% 5% auto 5%; */
+        /* grid-template-areas: 
+        "header header"
+        "navbar navbar"
+        "sidebar main"
+        "footer footer"; */
+        grid-template:  
+            "header header" 10%
+            "navbar navbar" 5%
+            "sidebar main" auto
+            "footer footer" 5% /
+            20%     auto;
+    }
+}
+
+@media (min-width: 900px){
+    .grid-container{
+        grid-template:  
+            "header header  header"     10%
+            "navbar main    sidebar"    auto
+            "footer footer  footer"     5% /
+            20%     auto    20%;
+    }
+}
